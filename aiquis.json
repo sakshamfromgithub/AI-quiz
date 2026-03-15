@@ -1,0 +1,226 @@
+ [
+  {
+    "id": "q1",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "A point charge q is placed at the centre of a cube. The total electric flux through the cube is:",
+    "options": [
+      "q/6ε₀",
+      "q/ε₀",
+      "6q/ε₀",
+      "Zero"
+    ],
+    "answer": 1,
+    "explanation": "Gauss law ke according kisi bhi closed surface se total electric flux = enclosed charge / ε₀ hota hai. Yahan enclosed charge q hai, isliye flux q/ε₀ hoga."
+  },
+  {
+    "id": "q2",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "An infinite plane sheet has uniform surface charge density σ. Electric field near the sheet is:",
+    "options": [
+      "σ/ε₀",
+      "σ/2ε₀",
+      "2σ/ε₀",
+      "Zero"
+    ],
+    "answer": 1,
+    "explanation": "Infinite charged sheet ke liye Gaussian pillbox use karne par electric field ka magnitude σ/2ε₀ milta hai."
+  },
+  {
+    "id": "q3",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "Electric field inside a uniformly charged spherical shell is:",
+    "options": [
+      "Maximum at centre",
+      "Minimum at surface",
+      "Zero everywhere inside",
+      "Depends on radius"
+    ],
+    "answer": 2,
+    "explanation": "Uniformly charged spherical shell ke andar har point par electric field zero hota hai."
+  },
+  {
+    "id": "q4",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "Gauss law is useful mainly for finding electric field in cases of:",
+    "options": [
+      "Irregular geometry",
+      "High symmetry",
+      "Only moving charges",
+      "Magnetic force"
+    ],
+    "answer": 1,
+    "explanation": "Gauss law sabse useful tab hota hai jab charge distribution me symmetry ho, jaise spherical, cylindrical ya planar symmetry."
+  },
+  {
+    "id": "q5",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "If no charge is enclosed inside a closed surface, then total electric flux through it is:",
+    "options": [
+      "Always zero",
+      "Always positive",
+      "Always negative",
+      "Infinite"
+    ],
+    "answer": 0,
+    "explanation": "Gauss law ke अनुसार total flux enclosed charge par depend karta hai. Agar enclosed charge zero hai to total flux bhi zero hoga."
+  },
+  {
+    "id": "q6",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "The SI unit of electric flux is:",
+    "options": [
+      "N/C",
+      "N·m²/C",
+      "C/N",
+      "V/m"
+    ],
+    "answer": 1,
+    "explanation": "Electric flux = electric field × area. Isliye iska unit N/C × m² = N·m²/C hota hai."
+  },
+  {
+    "id": "q7",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "A charge is placed outside a closed surface. Net electric flux through the surface will be:",
+    "options": [
+      "q/ε₀",
+      "q/2ε₀",
+      "Zero",
+      "Depends on shape"
+    ],
+    "answer": 2,
+    "explanation": "Surface ke bahar rakha charge enclosed nahi hota, isliye net flux zero hota hai."
+  },
+  {
+    "id": "q8",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "The electric field due to an infinitely long straight charged wire at radial distance r varies as:",
+    "options": [
+      "r",
+      "1/r",
+      "1/r²",
+      "Constant"
+    ],
+    "answer": 1,
+    "explanation": "Infinite line charge ke liye cylindrical Gaussian surface use karne par electric field 1/r ke proportional aata hai."
+  },
+  {
+    "id": "q9",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "The total electric flux through a closed surface depends upon:",
+    "options": [
+      "Shape of surface only",
+      "Area of surface only",
+      "Enclosed charge",
+      "Material of surface"
+    ],
+    "answer": 2,
+    "explanation": "Gauss law ke अनुसार flux ka total value sirf enclosed charge par depend karti hai."
+  },
+  {
+    "id": "q10",
+    "subject": "Physics",
+    "level": "jee",
+    "topic": "Gauss Law",
+    "difficulty": "tough",
+    "question": "For a conductor in electrostatic equilibrium, electric field inside the conductor is:",
+    "options": [
+      "Maximum",
+      "Zero",
+      "Infinite",
+      "Non-zero uniform"
+    ],
+    "answer": 1,
+    "explanation": "Electrostatic equilibrium me conductor ke andar electric field zero hota hai."
+  },
+  {
+    "id": "q11",
+    "subject": "Chemistry",
+    "level": "12",
+    "topic": "Chemical Kinetics",
+    "difficulty": "easy",
+    "question": "Rate of reaction generally increases with:",
+    "options": [
+      "Decrease in temperature",
+      "Increase in temperature",
+      "Decrease in concentration",
+      "Addition of inert gas only"
+    ],
+    "answer": 1,
+    "explanation": "Temperature badhne par effective collisions aur kinetic energy dono badhte hain, isliye reaction rate badh jaata hai."
+  },
+  {
+    "id": "q12",
+    "subject": "Chemistry",
+    "level": "12",
+    "topic": "Chemical Kinetics",
+    "difficulty": "moderate",
+    "question": "Unit of first order rate constant is:",
+    "options": [
+      "mol L⁻¹ s⁻¹",
+      "s⁻¹",
+      "L mol⁻¹ s⁻¹",
+      "mol² L⁻² s⁻¹"
+    ],
+    "answer": 1,
+    "explanation": "First order reaction ke liye k ka unit time⁻¹ hota hai, yani s⁻¹."
+  },
+  {
+    "id": "q13",
+    "subject": "Maths",
+    "level": "10",
+    "topic": "Quadratic Equations",
+    "difficulty": "easy",
+    "question": "The roots of x² - 5x + 6 = 0 are:",
+    "options": [
+      "2 and 3",
+      "1 and 6",
+      "-2 and -3",
+      "0 and 6"
+    ],
+    "answer": 0,
+    "explanation": "x² - 5x + 6 = (x - 2)(x - 3), so roots 2 and 3 hain."
+  },
+  {
+    "id": "q14",
+    "subject": "Biology",
+    "level": "neet",
+    "topic": "Human Reproduction",
+    "difficulty": "easy",
+    "question": "Fertilization in humans usually occurs in:",
+    "options": [
+      "Ovary",
+      "Uterus",
+      "Fallopian tube",
+      "Cervix"
+    ],
+    "answer": 2,
+    "explanation": "Humans me fertilization aam taur par fallopian tube me hota hai."
+  }
+]
