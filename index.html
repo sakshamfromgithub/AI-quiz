@@ -218,14 +218,14 @@
   <div class="container">
     <div class="card" id="setupCard">
       <h1>SSP AI Quiz Test</h1>
-      <p>Subject, topic, level aur difficulty select karo. Matching questions me se 10 questions ka test milega with 20 minute timer.</p>
+      <p>select Subject, topic, level and difficulty.</p>
 
       <div class="grid">
         <div>
           <label for="subject">Subject</label>
           <select id="subject">
             <option value="">Select Subject</option>
-          </select>
+        
         </div>
 
         <div>
@@ -493,7 +493,7 @@
       const difficulty = difficultyEl.value.trim();
 
       if (!subject || !topic || !level || !difficulty) {
-        alert("Please subject, topic, level aur difficulty select karo.");
+        alert("Please select subject, topic, level and difficulty");
         return;
       }
 
@@ -505,7 +505,7 @@
       );
 
       if (filteredQuestions.length < 10) {
-        alert("Is filter ke liye minimum 10 questions hone chahiye.");
+        alert("question not found!!");
         return;
       }
 
@@ -546,7 +546,7 @@
         allQuestions = await response.json();
         loadInitialFilters();
       } catch (error) {
-        alert("aiques.json load nahi ho paya. Check karo file same folder me hai ya nahi.");
+        alert("an error occured");
         console.error(error);
       }
     }
