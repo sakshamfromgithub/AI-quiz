@@ -217,15 +217,15 @@
 <body>
   <div class="container">
     <div class="card" id="setupCard">
-      <h1>SSP AI Quiz Test</h1>
-      <p>select Subject, topic, level and difficulty.</p>
+      <h1>SSP Abhyas</h1>
+      <p>ai quiz test</p>
 
       <div class="grid">
         <div>
           <label for="subject">Subject</label>
           <select id="subject">
             <option value="">Select Subject</option>
-        
+          </select>
         </div>
 
         <div>
@@ -505,7 +505,7 @@
       );
 
       if (filteredQuestions.length < 10) {
-        alert("question not found!!");
+        alert("Is filter ke liye minimum 10 questions hone chahiye.");
         return;
       }
 
@@ -546,7 +546,7 @@
         allQuestions = await response.json();
         loadInitialFilters();
       } catch (error) {
-        alert("an error occured");
+        alert("error occurred!!");
         console.error(error);
       }
     }
