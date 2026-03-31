@@ -53,7 +53,7 @@ const response = await fetch(
       return {
         statusCode: 500,
         body: JSON.stringify({
-          error: "Invalid Gemini response",
+          error: "Invalid response",
           data
         })
       };
