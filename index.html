@@ -493,6 +493,48 @@ nextBtn.onclick=()=>{
 };
 
 submitBtn.onclick=submitTest;
+
+  subjectEl.innerHTML = `
+<option value="">Select Subject</option>
+<option value="Physics">Physics</option>
+<option value="Chemistry">Chemistry</option>
+<option value="Maths">Maths</option>
+`;
+
+levelEl.innerHTML = `
+<option value="">Select Level</option>
+<option value="Class 10">Class 10</option>
+<option value="Class 11">Class 11</option>
+<option value="Class 12">Class 12</option>
+`;
+
+difficultyEl.innerHTML = `
+<option value="">Select Difficulty</option>
+<option value="Easy">Easy</option>
+<option value="Medium">Medium</option>
+<option value="Hard">Hard</option>
+`;
+
+topicEl.innerHTML = `<option value="">Select Topic</option>`;
+
+  subjectEl.addEventListener("change", () => {
+  const subject = subjectEl.value;
+
+  let topics = [];
+
+  if (subject === "Physics") {
+    topics = ["Mechanics", "Thermodynamics", "Optics"];
+  } else if (subject === "Chemistry") {
+    topics = ["Organic", "Inorganic", "Physical"];
+  } else if (subject === "Maths") {
+    topics = ["Algebra", "Calculus", "Coordinate Geometry"];
+  }
+
+  topicEl.innerHTML = `<option value="">Select Topic</option>`;
+  topics.forEach(t => {
+    topicEl.innerHTML += `<option value="${t}">${t}</option>`;
+  });
+});
 </script>
 </body>
 </html>
