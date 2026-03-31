@@ -437,7 +437,15 @@ async function generateAIQuestions(subject, topic, level, difficulty){
   });
 
   const data = await res.json();
+  // temp
+  console.log("STATUS:", res.status);
+
+  const data = await res.json();
+  console.log("RESPONSE:", data);
+  // temp end
   return data.questions;
+
+  
 }
 
 startTestBtn.addEventListener("click", async ()=>{
