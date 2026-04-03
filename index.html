@@ -271,6 +271,27 @@
         .hidden {
             display: none;
         }
+        .progress-bar{
+          width:100%;
+          height:10px;
+          background:#eee;
+          border-radius:20px;
+          overflow:hidden;
+          margin:12px 0 20px;
+        }
+        
+        #progressFill{
+          height:100%;
+          width:0%;
+          background:#4a1515;
+          transition:width 0.3s ease;
+        }
+        
+        #loadingText{
+          font-weight:bold;
+          margin-bottom:10px;
+          color:#4a1515;
+        }
     </style>
 </head>
 
@@ -370,21 +391,32 @@
     </div>
     <!-- loader -->
     <div id="loaderOverlay" class="loader-overlay hidden">
-        <div class="loader-content">
-            <div class="skeleton title"></div>
-            <div class="skeleton line"></div>
-            <div class="skeleton line"></div>
-            <div class="skeleton line"></div>
-
-            <div class="skeleton option"></div>
-            <div class="skeleton option"></div>
-            <div class="skeleton option"></div>
-            <div class="skeleton option"></div>
-        </div>
+  <div class="loader-content">
+    
+    <p id="loadingText">Initializing...</p>
+    
+    <div class="progress-bar">
+      <div id="progressFill"></div>
     </div>
+
+    <div class="skeleton title"></div>
+    <div class="skeleton line"></div>
+    <div class="skeleton line"></div>
+    <div class="skeleton option"></div>
+    <div class="skeleton option"></div>
+    <div class="skeleton option"></div>
+
+  </div>
+</div>
 
     <p style="text-align:center;color:#4d1616">SSP AI can Make Mistakes Sometimes! Please Use carefully!</p>
     <script>
+        
+                const progressFill = document.getElementById("progressFill");
+        const loadingText = document.getElementById("loadingText");
+        
+        let fakeProgressInterval;
+        
         const loaderOverlay = document.getElementById("loaderOverlay");
         let selectedQuestions = [];
         let userAnswers = [];
@@ -614,6 +646,42 @@
                 topicEl.innerHTML += `<option value="${t}">${t}</option>`;
             });
         });
+
+        // fake load
+        function startFakeLoading(){
+  let progress = 0;
+
+  const messages = [
+    "Initializing AI...",
+    "Generating Questions...",
+    "Almost Ready...",
+    "Final Touch..."
+  ];
+
+  let msgIndex = 0;
+
+  loadingText.textContent = messages[msgIndex];
+
+  fakeProgressInterval = setInterval(()=>{
+    progress += Math.random() * 10; // random speed
+
+    if(progress > 90) progress = 90; // 👈 stop at 90%
+
+    progressFill.style.width = progress + "%";
+
+    // change text
+    if(progress > (msgIndex+1)*25 && msgIndex < messages.length-1){
+      msgIndex++;
+      loadingText.textContent = messages[msgIndex];
+    }
+
+  }, 500);
+}
+
+        function stopFakeLoading(){
+  clearInterval(fakeProgressInterval);
+  progressFill.style.width = "100%";
+}
     </script>
 </body>
 
