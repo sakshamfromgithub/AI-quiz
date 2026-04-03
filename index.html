@@ -1,547 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSP Abhyas</title>
-  <style>
-    :root{
-      --bg:#ffffff;
-      --text:#000000;
-      --muted:#555;
-      --border:#4a1515;
-      --card:#ffffff;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSP Abhyas</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --muted: #555;
+            --border: #4a1515;
+            --card: #ffffff;
+        }
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-      font-family:Arial, sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    body{
-      background:var(--bg);
-      color:var(--text);
-      padding:20px;
-    }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            padding: 20px;
+        }
 
-    .container{
-      max-width:1000px;
-      margin:0 auto;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-    .card{
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:20px;
-      background:var(--card);
-      margin-bottom:18px;
-    }
+        .card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            background: var(--card);
+            margin-bottom: 18px;
+        }
 
-    h1{
-      color:maroon;
-      font-size:28px;
-      margin-bottom:8px;
-    }
+        h1 {
+            color: maroon;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
 
-    p{
-      color:var(--muted);
-      line-height:1.5;
-    }
+        p {
+            color: var(--muted);
+            line-height: 1.5;
+        }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-      gap:14px;
-      margin-top:18px;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
 
-    label{
-      display:block;
-      font-size:14px;
-      font-weight:bold;
-      margin-bottom:8px;
-    }
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
 
-    select, button{
-      width:100%;
-      padding:12px;
-      border:1px solid var(--border);
-      border-radius:10px;
-      background:#fff;
-      color:#000;
-      font-size:15px;
-    }
+        select,
+        button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            color: #000;
+            font-size: 15px;
+        }
 
-    button{
-      cursor:pointer;
-      font-weight:bold;
-    }
+        button {
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-    button:hover{
-      background:maroon;
-      color:#fff;
-    }
+        button:hover {
+            background: maroon;
+            color: #fff;
+        }
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:16px;
-    }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
 
-    .timer{
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:10px 16px;
-      font-weight:bold;
-    }
+        .timer {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-weight: bold;
+        }
 
-    .question-count{
-      font-weight:bold;
-    }
+        .question-count {
+            font-weight: bold;
+        }
 
-    .question-box{
-      margin-bottom:18px;
-      line-height:1.7;
-      font-size:18px;
-    }
+        .question-box {
+            margin-bottom: 18px;
+            line-height: 1.7;
+            font-size: 18px;
+        }
 
-    .options{
-      display:grid;
-      gap:10px;
-    }
+        .options {
+            display: grid;
+            gap: 10px;
+        }
 
-    .option{
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:12px;
-      cursor:pointer;
-      transition:0.2s;
-    }
+        .option {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-    .option:hover{
-      background:#f3f3f3;
-    }
+        .option:hover {
+            background: #f3f3f3;
+        }
 
-    .option.selected{
-      background:#4a1515;
-      color:#fff;
-    }
+        .option.selected {
+            background: #4a1515;
+            color: #fff;
+        }
 
-    .actions{
-      display:flex;
-      gap:10px;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
 
-    .actions button{
-      width:auto;
-      min-width:140px;
-    }
+        .actions button {
+            width: auto;
+            min-width: 140px;
+        }
 
-    .hidden{
-      display:none;
-    }
+        .hidden {
+            display: none;
+        }
 
-    .result-box{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-      gap:12px;
-      margin-top:18px;
-    }
+        .result-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
 
-    .stat{
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:16px;
-    }
+        .stat {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+        }
 
-    .stat h3{
-      font-size:15px;
-      margin-bottom:8px;
-    }
+        .stat h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
 
-    .stat p{
-      font-size:22px;
-      color:#000;
-      font-weight:bold;
-    }
+        .stat p {
+            font-size: 22px;
+            color: #000;
+            font-weight: bold;
+        }
 
-    .review-item{
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:16px;
-      margin-top:14px;
-    }
+        .review-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 14px;
+        }
 
-    .review-item h4{
-      margin-bottom:10px;
-      line-height:1.6;
-    }
+        .review-item h4 {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
 
-    .review-item p{
-      color:#000;
-      margin:6px 0;
-    }
+        .review-item p {
+            color: #000;
+            margin: 6px 0;
+        }
 
-    .correct{
-      color:green;
-      font-weight:bold;
-    }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
 
-    .wrong{
-      color:#b00020;
-      font-weight:bold;
-    }
+        .wrong {
+            color: #b00020;
+            font-weight: bold;
+        }
 
-    .neutral{
-      color:#444;
-      font-weight:bold;
-    }
+        .neutral {
+            color: #444;
+            font-weight: bold;
+        }
 
-    @media (max-width:600px){
-      h1{
-        font-size:24px;
-      }
+        @media (max-width:600px) {
+            h1 {
+                font-size: 24px;
+            }
 
-      .question-box{
-        font-size:16px;
-      }
-    }
-  </style>
+            .question-box {
+                font-size: 16px;
+            }
+        }
+
+        /* loader */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-content {
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #eee, #ddd, #eee);
+            background-size: 200% 100%;
+            animation: shimmer 1.2s infinite;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .title {
+            height: 28px;
+            width: 60%;
+        }
+
+        .line {
+            height: 14px;
+            width: 100%;
+        }
+
+        .option {
+            height: 40px;
+            width: 100%;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="card" id="setupCard">
-      <h1>SSP Abhyas</h1>
-      <p>ai quiz test <a href="mailto:sakshamsrivastav779@gmail.com">Share your Experience!</a></p>
+    <div class="container">
+        <div class="card" id="setupCard">
+            <h1>SSP Abhyas</h1>
+            <p>ai quiz test <a href="mailto:sakshamsrivastav779@gmail.com">Share your Experience!</a></p>
 
-      <div class="grid">
-        <div>
-          <label for="subject">Subject</label>
-          <select id="subject">
-            <option value="">Select Subject</option>
-          </select>
+            <div class="grid">
+                <div>
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option value="">Select Subject</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="topic">Topic</label>
+                    <select id="topic">
+                        <option value="">Select Topic</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="level">Level</label>
+                    <select id="level">
+                        <option value="">Select Level</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="difficulty">Difficulty</label>
+                    <select id="difficulty">
+                        <option value="">Select Difficulty</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="startTestBtn">Start Test</button>
+            </div>
         </div>
 
-        <div>
-          <label for="topic">Topic</label>
-          <select id="topic">
-            <option value="">Select Topic</option>
-          </select>
+        <div class="card hidden" id="testCard">
+            <div class="topbar">
+                <div class="question-count" id="questionCount">Question 1 / 10</div>
+                <div class="timer" id="timer">20:00</div>
+            </div>
+
+            <div class="question-box" id="questionBox"></div>
+            <div class="options" id="optionsBox"></div>
+
+            <div class="actions">
+                <button id="prevBtn">Previous</button>
+                <button id="nextBtn">Next</button>
+                <button id="submitBtn">Submit Test</button>
+            </div>
         </div>
 
-        <div>
-          <label for="level">Level</label>
-          <select id="level">
-            <option value="">Select Level</option>
-          </select>
-        </div>
+        <div class="card hidden" id="resultCard">
+            <h1>Test Result</h1>
+            <p>Yahan overall score aur detailed analysis diya gaya hai.</p>
 
-        <div>
-          <label for="difficulty">Difficulty</label>
-          <select id="difficulty">
-            <option value="">Select Difficulty</option>
-          </select>
-        </div>
-      </div>
+            <div class="result-box">
+                <div class="stat">
+                    <h3>Total Questions</h3>
+                    <p id="totalQuestions">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Correct</h3>
+                    <p id="correctCount">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Wrong</h3>
+                    <p id="wrongCount">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Unanswered</h3>
+                    <p id="unansweredCount">0</p>
+                </div>
+                <div class="stat">
+                    <h3>Score</h3>
+                    <p id="scoreText">0 / 10</p>
+                </div>
+                <div class="stat">
+                    <h3>Accuracy</h3>
+                    <p id="accuracyText">0%</p>
+                </div>
+            </div>
 
-      <div class="actions">
-        <button id="startTestBtn">Start Test</button>
-      </div>
+            <div id="reviewBox"></div>
+            <button onclick="window.location.href='https://sakshamstudypoint.netlify.app?progress=10'">
+                Back to Home
+            </button>
+        </div>
+    </div>
+    <!-- loader -->
+    <div id="loaderOverlay" class="loader-overlay hidden">
+        <div class="loader-content">
+            <div class="skeleton title"></div>
+            <div class="skeleton line"></div>
+            <div class="skeleton line"></div>
+            <div class="skeleton line"></div>
+
+            <div class="skeleton option"></div>
+            <div class="skeleton option"></div>
+            <div class="skeleton option"></div>
+            <div class="skeleton option"></div>
+        </div>
     </div>
 
-    <div class="card hidden" id="testCard">
-      <div class="topbar">
-        <div class="question-count" id="questionCount">Question 1 / 10</div>
-        <div class="timer" id="timer">20:00</div>
-      </div>
+    <p style="text-align:center;color:#4d1616">SSP AI can Make Mistakes Sometimes! Please Use carefully!</p>
+    <script>
+        const loaderOverlay = document.getElementById("loaderOverlay");
+        let selectedQuestions = [];
+        let userAnswers = [];
+        let currentQuestionIndex = 0;
+        let timerInterval = null;
+        let timeLeft = 20 * 60;
 
-      <div class="question-box" id="questionBox"></div>
-      <div class="options" id="optionsBox"></div>
+        const subjectEl = document.getElementById("subject");
+        const topicEl = document.getElementById("topic");
+        const levelEl = document.getElementById("level");
+        const difficultyEl = document.getElementById("difficulty");
 
-      <div class="actions">
-        <button id="prevBtn">Previous</button>
-        <button id="nextBtn">Next</button>
-        <button id="submitBtn">Submit Test</button>
-      </div>
-    </div>
+        const setupCard = document.getElementById("setupCard");
+        const testCard = document.getElementById("testCard");
+        const resultCard = document.getElementById("resultCard");
 
-    <div class="card hidden" id="resultCard">
-      <h1>Test Result</h1>
-      <p>Yahan overall score aur detailed analysis diya gaya hai.</p>
+        const questionCountEl = document.getElementById("questionCount");
+        const questionBox = document.getElementById("questionBox");
+        const optionsBox = document.getElementById("optionsBox");
+        const timerEl = document.getElementById("timer");
 
-      <div class="result-box">
-        <div class="stat">
-          <h3>Total Questions</h3>
-          <p id="totalQuestions">0</p>
-        </div>
-        <div class="stat">
-          <h3>Correct</h3>
-          <p id="correctCount">0</p>
-        </div>
-        <div class="stat">
-          <h3>Wrong</h3>
-          <p id="wrongCount">0</p>
-        </div>
-        <div class="stat">
-          <h3>Unanswered</h3>
-          <p id="unansweredCount">0</p>
-        </div>
-        <div class="stat">
-          <h3>Score</h3>
-          <p id="scoreText">0 / 10</p>
-        </div>
-        <div class="stat">
-          <h3>Accuracy</h3>
-          <p id="accuracyText">0%</p>
-        </div>
-      </div>
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const startTestBtn = document.getElementById("startTestBtn");
 
-      <div id="reviewBox"></div>
- <button onclick="window.location.href='https://sakshamstudypoint.netlify.app?progress=10'">
-  Back to Home
-</button>
-    </div>
-  </div>
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+        }
 
-  <p style="text-align:center;color:#4d1616">SSP AI can Make Mistakes Sometimes! Please Use carefully!</p>
-<script>
-let selectedQuestions = [];
-let userAnswers = [];
-let currentQuestionIndex = 0;
-let timerInterval = null;
-let timeLeft = 20 * 60;
+        function startTimer() {
+            timerEl.textContent = formatTime(timeLeft);
+            clearInterval(timerInterval);
 
-const subjectEl = document.getElementById("subject");
-const topicEl = document.getElementById("topic");
-const levelEl = document.getElementById("level");
-const difficultyEl = document.getElementById("difficulty");
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerEl.textContent = formatTime(timeLeft);
 
-const setupCard = document.getElementById("setupCard");
-const testCard = document.getElementById("testCard");
-const resultCard = document.getElementById("resultCard");
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitTest();
+                }
+            }, 1000);
+        }
 
-const questionCountEl = document.getElementById("questionCount");
-const questionBox = document.getElementById("questionBox");
-const optionsBox = document.getElementById("optionsBox");
-const timerEl = document.getElementById("timer");
+        function renderQuestion() {
+            const q = selectedQuestions[currentQuestionIndex];
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const submitBtn = document.getElementById("submitBtn");
-const startTestBtn = document.getElementById("startTestBtn");
+            questionCountEl.textContent = `Question ${currentQuestionIndex + 1} / 10`;
+            questionBox.textContent = q.question;
+            optionsBox.innerHTML = "";
 
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
-}
+            q.options.forEach((opt, i) => {
+                const div = document.createElement("div");
+                div.className = "option";
+                div.textContent = `${String.fromCharCode(65 + i)}. ${opt}`;
 
-function startTimer() {
-  timerEl.textContent = formatTime(timeLeft);
-  clearInterval(timerInterval);
+                if (userAnswers[currentQuestionIndex] === i) {
+                    div.classList.add("selected");
+                }
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = formatTime(timeLeft);
+                div.onclick = () => {
+                    userAnswers[currentQuestionIndex] = i;
+                    renderQuestion();
+                };
 
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      submitTest();
-    }
-  }, 1000);
-}
+                optionsBox.appendChild(div);
+            });
 
-function renderQuestion() {
-  const q = selectedQuestions[currentQuestionIndex];
+            prevBtn.style.display = currentQuestionIndex === 0 ? "none" : "inline-block";
+            nextBtn.style.display = currentQuestionIndex === 9 ? "none" : "inline-block";
+            submitBtn.style.display = currentQuestionIndex === 9 ? "inline-block" : "none";
+        }
 
-  questionCountEl.textContent = `Question ${currentQuestionIndex+1} / 10`;
-  questionBox.textContent = q.question;
-  optionsBox.innerHTML = "";
+        function submitTest() {
+            clearInterval(timerInterval);
 
-  q.options.forEach((opt, i) => {
-    const div = document.createElement("div");
-    div.className = "option";
-    div.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
+            testCard.classList.add("hidden");
+            resultCard.classList.remove("hidden");
 
-    if (userAnswers[currentQuestionIndex] === i) {
-      div.classList.add("selected");
-    }
+            let correct = 0, wrong = 0, unanswered = 0;
 
-    div.onclick = () => {
-      userAnswers[currentQuestionIndex] = i;
-      renderQuestion();
-    };
+            selectedQuestions.forEach((q, i) => {
+                if (userAnswers[i] === null) unanswered++;
+                else if (userAnswers[i] === q.answer) correct++;
+                else wrong++;
+            });
 
-    optionsBox.appendChild(div);
-  });
+            const total = 10;
+            const accuracy = Math.round((correct / total) * 100);
 
-  prevBtn.style.display = currentQuestionIndex === 0 ? "none" : "inline-block";
-  nextBtn.style.display = currentQuestionIndex === 9 ? "none" : "inline-block";
-  submitBtn.style.display = currentQuestionIndex === 9 ? "inline-block" : "none";
-}
+            document.getElementById("totalQuestions").textContent = total;
+            document.getElementById("correctCount").textContent = correct;
+            document.getElementById("wrongCount").textContent = wrong;
+            document.getElementById("unansweredCount").textContent = unanswered;
+            document.getElementById("scoreText").textContent = `${correct}/10`;
+            document.getElementById("accuracyText").textContent = `${accuracy}%`;
 
-function submitTest() {
-  clearInterval(timerInterval);
+            const reviewBox = document.getElementById("reviewBox");
+            reviewBox.innerHTML = "<h2>Detailed Analysis</h2>";
 
-  testCard.classList.add("hidden");
-  resultCard.classList.remove("hidden");
+            selectedQuestions.forEach((q, i) => {
+                const userAns = userAnswers[i];
 
-  let correct=0, wrong=0, unanswered=0;
+                const div = document.createElement("div");
+                div.className = "review-item";
 
-  selectedQuestions.forEach((q,i)=>{
-    if(userAnswers[i]===null) unanswered++;
-    else if(userAnswers[i]===q.answer) correct++;
-    else wrong++;
-  });
-
-  const total=10;
-  const accuracy=Math.round((correct/total)*100);
-
-  document.getElementById("totalQuestions").textContent=total;
-  document.getElementById("correctCount").textContent=correct;
-  document.getElementById("wrongCount").textContent=wrong;
-  document.getElementById("unansweredCount").textContent=unanswered;
-  document.getElementById("scoreText").textContent=`${correct}/10`;
-  document.getElementById("accuracyText").textContent=`${accuracy}%`;
-
-  const reviewBox=document.getElementById("reviewBox");
-  reviewBox.innerHTML="<h2>Detailed Analysis</h2>";
-
-  selectedQuestions.forEach((q,i)=>{
-    const userAns=userAnswers[i];
-
-    const div=document.createElement("div");
-    div.className="review-item";
-
-    div.innerHTML=`
-      <h4>Q${i+1}. ${q.question}</h4>
-      <p>Your Answer: ${userAns===null?"Not Attempted":q.options[userAns]}</p>
+                div.innerHTML = `
+      <h4>Q${i + 1}. ${q.question}</h4>
+      <p>Your Answer: ${userAns === null ? "Not Attempted" : q.options[userAns]}</p>
       <p>Correct Answer: ${q.options[q.answer]}</p>
       <p>Explanation: ${q.explanation}</p>
     `;
 
-    reviewBox.appendChild(div);
-  });
-}
+                reviewBox.appendChild(div);
+            });
+        }
 
-async function generateAIQuestions(subject, topic, level, difficulty){
-  const res = await fetch("/.netlify/functions/gemini",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({subject,topic,level,difficulty})
-  });
+        async function generateAIQuestions(subject, topic, level, difficulty) {
+            const res = await fetch("/.netlify/functions/gemini", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ subject, topic, level, difficulty })
+            });
 
-  console.log("STATUS:", res.status);
+            console.log("STATUS:", res.status);
 
-  const data = await res.json();
-  console.log("RESPONSE:", data);
+            const data = await res.json();
+            console.log("RESPONSE:", data);
 
-  return data.questions;
-}
+            return data.questions;
+        }
 
-startTestBtn.addEventListener("click", async ()=>{
-  const subject=subjectEl.value;
-  const topic=topicEl.value;
-  const level=levelEl.value;
-  const difficulty=difficultyEl.value;
+        startTestBtn.addEventListener("click", async () => {
+            const subject = subjectEl.value;
+            const topic = topicEl.value;
+            const level = levelEl.value;
+            const difficulty = difficultyEl.value;
 
-  if(!subject||!topic||!level||!difficulty){
-    alert("Fill all fields");
-    return;
-  }
+            if (!subject || !topic || !level || !difficulty) {
+                alert("Fill all fields");
+                return;
+            }
 
-  startTestBtn.textContent="Generating...";
-  startTestBtn.disabled=true;
+            loaderOverlay.classList.remove("hidden"); // 👈 SHOW LOADER
 
-  try{
-    const questions = await generateAIQuestions(subject,topic,level,difficulty);
+            try {
+                const questions = await generateAIQuestions(subject, topic, level, difficulty);
 
-    if(!questions || questions.length<10){
-      alert("AI failed");
-      location.reload();
-      return;
-    }
+                if (!questions || questions.length < 10) {
+                    alert("AI failed");
+                    location.reload();
+                    return;
+                }
 
-    selectedQuestions = questions;
-    userAnswers = new Array(10).fill(null);
-    currentQuestionIndex=0;
-    timeLeft=20*60;
+                selectedQuestions = questions;
+                userAnswers = new Array(10).fill(null);
+                currentQuestionIndex = 0;
+                timeLeft = 20 * 60;
 
-    setupCard.classList.add("hidden");
-    testCard.classList.remove("hidden");
+                setupCard.classList.add("hidden");
+                testCard.classList.remove("hidden");
 
-    renderQuestion();
-    startTimer();
+                renderQuestion();
+                startTimer();
 
-  }catch(e){
-    alert("Error");
-    console.error(e);
-  }
+            } catch (e) {
+                alert("Error");
+                console.error(e);
+            }
 
-  startTestBtn.textContent="Start Test";
-  startTestBtn.disabled=false;
-});
+            loaderOverlay.classList.add("hidden"); // 👈 HIDE LOADER
+        });
 
-prevBtn.onclick=()=>{
-  currentQuestionIndex--;
-  renderQuestion();
-};
+        prevBtn.onclick = () => {
+            currentQuestionIndex--;
+            renderQuestion();
+        };
 
-nextBtn.onclick=()=>{
-  currentQuestionIndex++;
-  renderQuestion();
-};
+        nextBtn.onclick = () => {
+            currentQuestionIndex++;
+            renderQuestion();
+        };
 
-submitBtn.onclick=submitTest;
+        submitBtn.onclick = submitTest;
 
-  subjectEl.innerHTML = `
+        subjectEl.innerHTML = `
 <option value="">Select Subject</option>
 <option value="Physics">Physics</option>
 <option value="Chemistry">Chemistry</option>
 <option value="Maths">Maths</option>
 `;
 
-levelEl.innerHTML = `
+        levelEl.innerHTML = `
 <option value="">Select Level</option>
 <option value="Class 10">Class 10</option>
 <option value="Class 11">Class 11</option>
 <option value="Class 12">Class 12</option>
 `;
 
-difficultyEl.innerHTML = `
+        difficultyEl.innerHTML = `
 <option value="">Select Difficulty</option>
 <option value="Easy">Easy</option>
 <option value="Medium">Medium</option>
 <option value="Hard">Hard</option>
 `;
 
-topicEl.innerHTML = `<option value="">Select Topic</option>`;
+        topicEl.innerHTML = `<option value="">Select Topic</option>`;
 
-  subjectEl.addEventListener("change", () => {
-  const subject = subjectEl.value;
+        subjectEl.addEventListener("change", () => {
+            const subject = subjectEl.value;
 
-  let topics = [];
+            let topics = [];
 
-  if (subject === "Physics") {
-    topics = ["Mechanics", "Thermodynamics", "Optics"];
-  } else if (subject === "Chemistry") {
-    topics = ["Organic", "Inorganic", "Physical"];
-  } else if (subject === "Maths") {
-    topics = ["Algebra", "Calculus", "Coordinate Geometry"];
-  }
+            if (subject === "Physics") {
+                topics = ["Mechanics", "Thermodynamics", "Optics"];
+            } else if (subject === "Chemistry") {
+                topics = ["Organic", "Inorganic", "Physical"];
+            } else if (subject === "Maths") {
+                topics = ["Algebra", "Calculus", "Coordinate Geometry"];
+            }
 
-  topicEl.innerHTML = `<option value="">Select Topic</option>`;
-  topics.forEach(t => {
-    topicEl.innerHTML += `<option value="${t}">${t}</option>`;
-  });
-});
-</script>
+            topicEl.innerHTML = `<option value="">Select Topic</option>`;
+            topics.forEach(t => {
+                topicEl.innerHTML += `<option value="${t}">${t}</option>`;
+            });
+        });
+    </script>
 </body>
+
 </html>
