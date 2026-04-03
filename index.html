@@ -563,7 +563,8 @@
                 return;
             }
 
-            loaderOverlay.classList.remove("hidden"); // 👈 SHOW LOADER
+           loaderOverlay.classList.remove("hidden");
+            startFakeLoading(); // 👈 SHOW LOADER
 
             try {
                 const questions = await generateAIQuestions(subject, topic, level, difficulty);
@@ -682,6 +683,9 @@
   clearInterval(fakeProgressInterval);
   progressFill.style.width = "100%";
 }
+
+        stopFakeLoading();
+loaderOverlay.classList.add("hidden");
     </script>
 </body>
 
