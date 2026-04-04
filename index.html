@@ -587,8 +587,9 @@
                 startTimer();
 
             } catch (e) {
-                alert("Error");
+                alert("sorry! an Error occurred!");
                 console.error(e);
+                location.reload() 
             }
 
             loaderOverlay.classList.add("hidden"); // 👈 HIDE LOADER
