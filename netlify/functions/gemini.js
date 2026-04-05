@@ -16,7 +16,7 @@ IMPORTANT RULES:
 EXPLANATION RULE:
 - Explanation MUST be exactly ONE line
 - No line breaks
-- Max 15-20 words
+- Max 10-15 words
 - Clear and concise, no extra details
 
 Format:
